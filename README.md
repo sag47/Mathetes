@@ -71,6 +71,44 @@ If you're going to use the Twitter plugin you also need to configure it:
 
     ruby -rubygems -Ipath/to/silverplatter-irc/lib -Ipath/to/silverplatter-log/lib -Ilib irc-bot.rb
 
+## Debugging
+
+    ruby -vvvv -rdebug -rubygems -Ipath/to/silverplatter-irc/lib -Ipath/to/silverplatter-log/lib -Ilib irc-bot.rb
+
+If you're using the mathetes service script then you can uncomment the line for debugging and comment out the line for normal running in run.sh.
+
+## Ubuntu service integration and autostarting
+
+Create a user that mathetes can use the client in separate from your normal user.
+
+    adduser mathetes
+
+Make sure the Mathetes directory is owned by user mathetes.
+
+    chown -R /path/to/Mathetes
+
+Link the service (sometimes it's more useful to make the link name the name of the irc bot)
+
+    ln -s /path/to/mathetes.service /etc/init.d/mathetes
+
+Autostart the service (mathetes is the name of the link in /etc/init.d/).
+
+    update-rc.d mathetes start 30 2 3 4 5 . stop 30 0 6 .
+
+If you ever need to stop the service from autostarting you can run the following.
+
+    update-rc.d -f mathetes remove
+
+You can now control the script with the service command.
+
+    service mathetes help
+    service mathetes start
+    service mathetes stop
+
+Sometimes you need to tell PostgreSQL to autostart.  Your service name might be different than mine.
+
+    update-rc.d mathetes start 30 S . stop 30 0 6 .
+
 ## Support
 
 Come visit me (Pistos) on FreeNode in the #mathetes channel, or report issues at
