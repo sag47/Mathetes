@@ -91,7 +91,7 @@ Link the service (sometimes it's more useful to make the link name the name of t
 
     ln -s /path/to/mathetes.service /etc/init.d/mathetes
 
-Autostart the service (mathetes is the name of the link in /etc/init.d/).
+Autostart the service (mathetes is the name of the link in /etc/init.d/).  Also you should start the mathetes service after the PostgreSQL service (these commands will do that).
 
     update-rc.d mathetes start 30 2 3 4 5 . stop 30 0 6 .
 
@@ -107,7 +107,7 @@ You can now control the script with the service command.
 
 Sometimes you need to tell PostgreSQL to autostart.  Your service name might be different than mine.
 
-    update-rc.d mathetes start 30 S . stop 30 0 6 .
+    update-rc.d postgresql-8.4 start 19 2 3 4 5 . stop 21 0 1 6 .
 
 ## Support
 
