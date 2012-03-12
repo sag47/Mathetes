@@ -1,17 +1,9 @@
 #!/bin/bash
-#(03:17:05 PM) Sarteck: http://www.clubbleach.org/forums/showthread.php?92129-Alchemist-Chat-Thread&p=4780193&viewfull=1#post4780193
-# (03:29:25 PM) Sarteck: Nah, not as root, just as a regular user.  :P
-# (03:29:29 PM) Sarteck: Oh
-# (03:29:30 PM) Sarteck: Oh
-# (03:29:33 PM) Sarteck: Um
-# (03:29:42 PM) Sarteck: Could you please include in the script
-# (03:29:50 PM) Sarteck: EXPORT MALLOC_CHECK=4
-# (03:30:14 PM) Sarteck: Not sure why, but I have to do that before EggDrop runs after I updated a few months ago.%s
-
+# Created by Sam Gleske (github user sag47)
 
 
 #########
-#settings for eggdrop service script
+#settings for mathetes service script
 #with any settings do not leave and trailing semicolons (;)
 #########
 
@@ -46,12 +38,12 @@ PIDFILE="/usr/local/Mathetes/mathetes.pid"
 
 #This comment block is for RedHat systems integration compatibility
 # chkconfig: 2345 0 0
-# description: eggdrop chkconfig compatibility
+# description: mathetes chkconfig compatibility
 ### BEGIN INIT INFO
-# Provides: eggdrop
+# Provides: mathetes
 # Defalt-Start: 2 3 4 5
 # Short-Description: start and stop eggdrop
-# Description: eggdrop chkconfig compatibility
+# Description: mathetes chkconfig compatibility
 
 
 #import service functions, the script can be extended to use them if you want in the future
@@ -143,7 +135,7 @@ status() {
 }
 
 stop() {
-  #Sam's custom kill command for jboss
+  #Sam's custom kill command
   kill -s 15 $(cat $PIDFILE) 2> /dev/null
   stopcode="$?"
   if [ "$stopcode" -eq "0" ];then
